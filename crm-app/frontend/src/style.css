@@ -4,7 +4,6 @@
 
 /* ------------------------------------------------------------
    Reset & base
-   A minimal reset so browsers display things consistently.
    ------------------------------------------------------------ */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -33,14 +32,6 @@ h2 {
 }
 
 /* ------------------------------------------------------------
-   Layout — centres the page content with a max width
-   ------------------------------------------------------------ */
-.container {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-/* ------------------------------------------------------------
    Buttons
    ------------------------------------------------------------ */
 button {
@@ -57,7 +48,6 @@ button:hover {
   background-color: #e8e8e8;
 }
 
-/* A red destructive button — add class="btn-danger" to delete buttons */
 button.btn-danger {
   border-color: #e05252;
   color: #e05252;
@@ -102,7 +92,7 @@ textarea {
 }
 
 /* ------------------------------------------------------------
-   Contact card  —  used on index.html via contactCard.js
+   Contact card  —  built by contactCard.js
    ------------------------------------------------------------ */
 .contact-card {
   display: flex;
@@ -115,84 +105,95 @@ textarea {
   margin-bottom: 10px;
 }
 
-.contact-card .contact-name {
-  font-weight: bold;
-  flex: 1;
+/* ============================================================
+   index.html — Dashboard layout & components
+   ============================================================ */
+
+/* Body state */
+body.landing-page {
 }
 
-.contact-card .contact-email {
-  color: #666666;
-  font-size: 0.9rem;
-}
-
-.contact-card .contact-company {
-  color: #444444;
-  font-size: 0.9rem;
+/* Top-level wrapper */
+.main-layout {
 }
 
 /* ------------------------------------------------------------
-   Notes section  —  used on contact.html
+   Header / top bar
    ------------------------------------------------------------ */
-.notes-section {
-  margin-top: 32px;
+.top-bar {
 }
 
-.note-item {
-  padding: 10px 0;
-  border-bottom: 1px solid #eeeeee;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.logo {
 }
 
-.note-item p {
-  margin: 0;
+.header-buttons {
 }
 
-.note-item .note-meta {
-  font-size: 0.8rem;
-  color: #999999;
+.header-button {
+}
+
+.header-button:hover {
 }
 
 /* ------------------------------------------------------------
-   Files section  —  used on contact.html
+   Sidebar
    ------------------------------------------------------------ */
-.files-section {
-  margin-top: 32px;
+.side-bar {
 }
 
-.file-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid #eeeeee;
+.side-nav {
 }
 
-.file-item .file-name {
-  flex: 1;
+.side-nav-link {
 }
 
-.file-item .file-meta {
-  font-size: 0.8rem;
-  color: #999999;
+.side-nav-link:hover {
 }
 
 /* ------------------------------------------------------------
-   Back link  —  the "← Back" button on contact.html
+   Main content area
    ------------------------------------------------------------ */
-.back-link {
-  display: inline-block;
-  margin-bottom: 20px;
-  font-size: 0.9rem;
-  color: #4a90d9;
-  text-decoration: none;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
+.main-content {
 }
 
-.back-link:hover {
-  text-decoration: underline;
+/* ------------------------------------------------------------
+   Dashboard stats strip
+   ------------------------------------------------------------ */
+.Dashboard-stats {
+}
+
+.stat-card {
+}
+
+#total-contacts {
+}
+
+#open-deals {
+}
+
+#tasks-due {
+}
+
+#upcoming-meetings {
+}
+
+/* ------------------------------------------------------------
+   Dashboard grid cards
+   ------------------------------------------------------------ */
+.dashboard-grid {
+}
+
+.dashboard-card {
+}
+
+#urgent-tasks {
+}
+
+#upcoming-calendar {
+}
+
+#deals-attention {
+}
+
+#recent-activity {
 }

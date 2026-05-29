@@ -3,12 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRM - Contacts</title>
+  <title>CRM - Dashboard</title>
   <link rel="stylesheet" href="src/style.css" />
 </head>
-<body>
+<body class="landing-page">
 
-  <!-- Page content goes here -->
+  <div class="main-layout">
+    
+  <!-- ============================================
+         HEADER 
+         ============================================ -->
+
+    <header class="top-bar">
+      <div>
+        <h1 class="logo">Cliently</h1>
+      </div>
+      <div class="header-buttons">
+        <button type="button" class="header-button">Search</button>
+        <button type="button" class="header-button">My Team</button>
+        <button type="button" class="header-button">Settings</button>
+        <button type="button" class="header-button">Profile</button>
+      </div>
+    </header>
+      <!-- ============================================
+         SIDE BAR
+         ============================================ -->
+    <aside class="side-bar">
+      <nav class="side-nav">
+        <ul>
+          <li><a href="#" class="side-nav-link">Dashboard</a></li>
+          <li><a href="#" class="side-nav-link">Calendar</a></li>
+          <li><a href="#" class="side-nav-link">Contacts</a></li>
+          <li><a href="#" class="side-nav-link">Deals</a></li>
+          <li><a href="#" class="side-nav-link">Tasks</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- ============================================
+         MAIN CONTENT
+         ============================================ -->
+    <main class="main-content">
+
+    </main>
+    <section class="Dashboard-stats">
+      <div class="stat-card">
+        <h3>Total Contacts</h3>
+        <p id="total-contacts">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Open Deals</h3>
+        <p id="open-deals">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Tasks Due</h3>
+        <p id="tasks-due">0</p>
+      </div> 
+      <div class="stat-card">
+        <h3>Upcoming Meetings</h3>
+        <p id="upcoming-meetings">0</p>
+      </div>
+    </section>
+    <section class="dashboard-grid">
+      <div class="dashboard-card">
+        <h3>Urgent Tasks </h3>
+        <ul id="urgent-tasks">
+          <li>No urgent tasks</li>
+      </div>
+      <div class="dashboard-card">
+        <h3>Upcoming Calendar</h3>
+        <ul id="upcoming-calendar">
+          <li>No upcoming events</li>
+        </ul>
+      </div>
+      <div class="dashboard-card">
+        <h3>Deals needing attention</h3>
+        <ul id="deals-attention">
+          <li>No deals needing attention</li>
+        </ul>
+      </div>
+      <div class="dashboard-card">
+        <h3>Recent Activity</h3>
+        <ul id="recent-activity">
+          <li>No recent activity</li>
+        </ul>
+      </div>
+
+    </section>
+
+
+
+  </div>  
+  
+
+
+  <!-- ============================================
+         SIDE BAR
+         ============================================ -->
+
+
+
+
 
   <!-- Page logic -->
   <script type="module" src="src/pages/contacts.js"></script>
