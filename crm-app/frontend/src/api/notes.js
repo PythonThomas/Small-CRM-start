@@ -1,13 +1,36 @@
+// notes.js
 // HTTP calls for the /notes resource.
-import axios from 'axios'
 
-const BASE = '/api/notes'
+const API_BASE = 'http://localhost:8000'
 
-export const getNotesByContact = (contactId) =>
-  axios.get(`${BASE}/contact/${contactId}`).then(r => r.data)
+// Get all notes that belong to a specific contact
+export async function getNotesByContact(contactId) {
+  const response = await fetch(`${API_BASE}/notes/contact/${contactId}`)
+  return response.json()
+}
 
-export const createNote = (data) => axios.post(BASE, data).then(r => r.data)
+// Create a new note for a contact
+// data should be: { contact_id: number, body: string }
+export async function createNote(data) {
+  const response = await fetch(`${API_BASE}/notes`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+  return response.json()
+}
 
-export const updateNote = (id, data) => axios.patch(`${BASE}/${id}`, data).then(r => r.data)
+// Update the text of an existing note
+export async function updateNote(id, body) {
+  const response = await fetch(`${API_BASE}/notes/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ body }),
+  })
+  return response.json()
+}
 
-export const deleteNote = (id) => axios.delete(`${BASE}/${id}`)
+// Delete a note by id
+export async function deleteNote(id) {
+  await fetch(`${API_BASE}/notes/${id}`, { method: 'DELETE' })
+}

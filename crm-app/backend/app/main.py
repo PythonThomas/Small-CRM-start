@@ -1,5 +1,5 @@
 # Entry point for the FastAPI application.
-# Registers all routers and configures CORS for the React frontend.
+# Registers all routers and configures CORS for the plain HTML/JS frontend.
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -13,10 +13,16 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="CRM API", version="1.0.0")
 
-# Allow requests from the Vite dev server
+# Allow requests from the browser when opening HTML files via VS Code Live Server
+# or python -m http.server. Add your own origin here if you use a different port.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+        "http://localhost:5500",   # VS Code Live Server default
+        "http://127.0.0.1:5500",
+        "http://localhost:8080",   # python -m http.server default
+        "http://127.0.0.1:8080",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
