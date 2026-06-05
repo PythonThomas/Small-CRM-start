@@ -1,5 +1,5 @@
 /* ============================================================
-   style.css  —  shared styles for index.html and contact.html
+   style.css  —  shared styles for index.html and contacts.html
    ============================================================ */
 
 /* ------------------------------------------------------------
@@ -114,7 +114,7 @@ body.landing-page {
 }
 
 /* Top-level wrapper */
-.main-layout {
+.app-shell {
 }
 
 /* ------------------------------------------------------------
@@ -126,7 +126,7 @@ body.landing-page {
 .logo {
 }
 
-.header-buttons {
+.header-actions {
 }
 
 .header-button {

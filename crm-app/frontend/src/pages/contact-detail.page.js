@@ -1,6 +1,6 @@
-// contact-detail.page.js  —  page controller for contact.html
+// contact-detail.page.js  —  page controller for contacts.html
 // The contact id is passed through the URL as a query parameter, e.g.:
-//   contact.html?id=3
+//   contacts.html?id=3
 
 import { getContact } from '../api/contacts.api.js'
 import { getNotesByContact, createNote, deleteNote } from '../api/notes.api.js'
