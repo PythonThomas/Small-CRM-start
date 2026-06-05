@@ -1,11 +1,10 @@
-// contact-detail.js  —  page controller for contact.html
-// This file runs when contact.html is opened.
+// contact-detail.page.js  —  page controller for contact.html
 // The contact id is passed through the URL as a query parameter, e.g.:
 //   contact.html?id=3
 
-import { getContact } from '../api/contacts.js'
-import { getNotesByContact, createNote, deleteNote } from '../api/notes.js'
-import { getFilesByContact, uploadFile, deleteFile } from '../api/files.js'
+import { getContact } from '../api/contacts.api.js'
+import { getNotesByContact, createNote, deleteNote } from '../api/notes.api.js'
+import { getFilesByContact, uploadFile, deleteFile } from '../api/files.api.js'
 
 // Read the ?id= value from the current URL
 const params = new URLSearchParams(window.location.search)

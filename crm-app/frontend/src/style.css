@@ -158,42 +158,98 @@ body.landing-page {
 
 /* ------------------------------------------------------------
    Dashboard stats strip
+   — Light blue cards on a light grey background strip
    ------------------------------------------------------------ */
 .Dashboard-stats {
+  display: grid;
+  /* columns on wide screens, auto-fit on smaller */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  background-color: #f0f4f8; /* light grey strip */
+  padding: 20px;
+  border-radius: 10px;
 }
 
+/* Individual stat tile */
 .stat-card {
+  background-color: #dbeafe; /* light blue */
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-#total-contacts {
+/* Stat card label */
+.stat-card h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b6fa5; /* muted blue */
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-#open-deals {
-}
-
-#tasks-due {
-}
-
+/* Stat numbers — grouped because they all share the same style */
+#total-contacts,
+#open-deals,
+#tasks-due,
 #upcoming-meetings {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e3a5f; /* deep navy */
 }
 
 /* ------------------------------------------------------------
    Dashboard grid cards
+   — White cards on a light grey background, blue headings
    ------------------------------------------------------------ */
 .dashboard-grid {
+  display: grid;
+  /* columns on wide screens, auto-fit on smaller */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  background-color: #f0f4f8; /* light grey strip, matches stats */
+  padding: 20px;
+  border-radius: 10px;
 }
 
+/* Individual dashboard card */
 .dashboard-card {
+  background-color: #ffffff;
+  border: 1px solid #d1dde8; /* subtle grey-blue border */
+  border-radius: 8px;
+  padding: 16px 20px;
 }
 
-#urgent-tasks {
+/* Card heading with blue accent underline */
+.dashboard-card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2563a8; /* medium blue */
+  margin-bottom: 10px;
+  border-bottom: 1px solid #dbeafe; /* light blue rule */
+  padding-bottom: 8px;
 }
 
-#upcoming-calendar {
-}
-
-#deals-attention {
-}
-
+/* All four list panels share identical list styling */
+#urgent-tasks,
+#upcoming-calendar,
+#deals-attention,
 #recent-activity {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* List row — subtle separator line */
+#urgent-tasks li,
+#upcoming-calendar li,
+#deals-attention li,
+#recent-activity li {
+  font-size: 0.9rem;
+  color: #64748b; /* grey text for placeholder/empty state */
+  padding: 4px 0;
+  border-bottom: 1px solid #f1f5f9;
 }
