@@ -15,7 +15,7 @@ export function createContactCard(contact, onView, onDelete) {
   name.className = 'contact-name'
   name.textContent = `${contact.first_name} ${contact.last_name}`
 
-  // Email address displayed as plain text
+  // Email address displayed as plain texst
   const email = document.createElement('span')
   email.className = 'contact-email'
   email.textContent = contact.email
