@@ -1,7 +1,9 @@
 # Entry point for the FastAPI application.
-# Registers all routers and configures CORS for the plain HTML/JS frontend.
+# Serves the frontend directly and registers all API routers.
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
 
 from app.database import engine, Base
 from app.contacts.router import router as contacts_router
@@ -13,26 +15,41 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="CRM API", version="1.0.0")
 
-# Allow requests from the browser when opening HTML files via VS Code Live Server
-# or python -m http.server. Add your own origin here if you use a different port.
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5500",   # VS Code Live Server default
-        "http://127.0.0.1:5500",
-        "http://localhost:8080",   # python -m http.server default
-        "http://127.0.0.1:8080",
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# Resolve the frontend directory relative to this file:
+#   main.py  →  backend/app/main.py
+#   parent   →  backend/app/
+#   parent   →  backend/
+#   parent   →  crm-app/
+#   / frontend  →  crm-app/frontend/
+FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend"
 
+# Serve JS, CSS and other assets under /src
+app.mount("/src", StaticFiles(directory=FRONTEND_DIR / "src"), name="src")
+
+# API routers
 app.include_router(contacts_router, prefix="/contacts", tags=["contacts"])
-app.include_router(notes_router, prefix="/notes", tags=["notes"])
-app.include_router(files_router, prefix="/files", tags=["files"])
+app.include_router(notes_router,    prefix="/notes",    tags=["notes"])
+app.include_router(files_router,    prefix="/files",    tags=["files"])
 
+
+# ── HTML page routes ──────────────────────────────────────────────────────────
 
 @app.get("/")
-def root():
-    return {"status": "ok"}
+def serve_dashboard():
+    return FileResponse(FRONTEND_DIR / "index.html")
+
+@app.get("/contacts.html")
+def serve_contacts():
+    return FileResponse(FRONTEND_DIR / "contacts.html")
+
+@app.get("/deals.html")
+def serve_deals():
+    return FileResponse(FRONTEND_DIR / "deals.html")
+
+@app.get("/tasks.html")
+def serve_tasks():
+    return FileResponse(FRONTEND_DIR / "tasks.html")
+
+@app.get("/calendar.html")
+def serve_calendar():
+    return FileResponse(FRONTEND_DIR / "calendar.html")
