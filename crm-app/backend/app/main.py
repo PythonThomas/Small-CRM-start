@@ -7,8 +7,11 @@ from pathlib import Path
 
 from app.database import engine, Base
 from app.contacts.router import router as contacts_router
-from app.notes.router import router as notes_router
-from app.files.router import router as files_router
+from app.notes.router   import router as notes_router
+from app.files.router   import router as files_router
+from app.deals.router   import router as deals_router
+from app.tasks.router   import router as tasks_router
+from app.events.router  import router as events_router
 
 # Create all tables on startup (use Alembic for production migrations)
 Base.metadata.create_all(bind=engine)
@@ -16,11 +19,11 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="CRM API", version="1.0.0")
 
 # Resolve the frontend directory relative to this file:
-#   main.py  →  backend/app/main.py
-#   parent   →  backend/app/
-#   parent   →  backend/
-#   parent   →  crm-app/
-#   / frontend  →  crm-app/frontend/
+#   main.py  -  backend/app/main.py
+#   parent   -  backend/app/
+#   parent   -  backend/
+#   parent   -  crm-app/
+#   / frontend  -  crm-app/frontend/
 FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend"
 
 # Serve JS, CSS and other assets under /src
@@ -30,6 +33,9 @@ app.mount("/src", StaticFiles(directory=FRONTEND_DIR / "src"), name="src")
 app.include_router(contacts_router, prefix="/contacts", tags=["contacts"])
 app.include_router(notes_router,    prefix="/notes",    tags=["notes"])
 app.include_router(files_router,    prefix="/files",    tags=["files"])
+app.include_router(deals_router,    prefix="/deals",    tags=["deals"])
+app.include_router(tasks_router,    prefix="/tasks",    tags=["tasks"])
+app.include_router(events_router,   prefix="/events",   tags=["events"])
 
 
 # ── HTML page routes ──────────────────────────────────────────────────────────

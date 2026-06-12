@@ -121,18 +121,45 @@ body.landing-page {
    Header / top bar
    ------------------------------------------------------------ */
 .top-bar {
+  position: relative; /* popups are positioned relative to this */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
 }
 
 .logo {
 }
 
 .header-actions {
+  display: flex;
+  gap: 1rem;
 }
 
 .header-button {
 }
 
 .header-button:hover {
+}
+
+/* Popup panels — dropped below the header, anchored to the right edge.
+   Visibility is controlled by toggling the .hidden class via shell.js.   */
+.popup {
+  position: absolute;
+  top: calc(100% + 8px); /* 8px gap below the header */
+  right: 0;
+  z-index: 100;
+  min-width: 240px;
+  background-color: #ffffff;
+  border: 1px solid #d1dde8;
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* .hidden is toggled by shell.js to show/hide popups */
+.hidden {
+  display: none;
 }
 
 /* ------------------------------------------------------------
